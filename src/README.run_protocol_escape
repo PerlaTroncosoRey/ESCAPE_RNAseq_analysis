@@ -1,0 +1,48 @@
+This pipeline has been modified and extended from the HISAT2/StringTie protocol (Pertea et al., Nat. Prot., 2016), adding a pre-processing step using SortMeRNA (Kopylova E., Noé L. and Touzet H., Bioinformatics, 2012) and Trim Galore! (Felix Krueger, The Babraham Institute). To see the original pipeline visit ftp://ftp.ccb.jhu.edu/pub/RNAseq_protocol.
+
+In order to run the HISAT-StringTie pipeline on the example data, a Linux or OS X computer with at least 8 GB RAM
+and preferably multiple cores should be used, following the steps suggested below.
+
+ 1. Download and install the current versions of 
+     hisat2 (http://ccb.jhu.edu/software/hisat2) and 
+     stringtie (http://ccb.jhu.edu/software/stringtie).
+    Install the Ballgown packages and its other dependencies in R as 
+     described in the protocol paper. 
+    The samtools program should also be installed on the system 
+    (http://samtools.sourceforge.net/), all versions from 0.1.19 to 1.3
+    are supported for this script.
+    Install SortMeRNA v 2.1b from. Create the indexes for the rRNA databases.
+    Download and install TrimGalore! v.
+
+
+ 2. Create or choose a working directory for this run (input and output files
+    will be stored in this directory).
+
+ 3. Download the test data (test_raw_data.gz), rnaseq_pipeline.sh and rnaseq_pipeline.config.sh
+    in the current working directory. Then unpack test_raw.tar.gz:
+ 
+      tar -zxvf test_data.tar.gz
+
+    This command will create a directory ./rawdata in the current directory.
+
+ 4. Open rnaseq_pipeline.config.sh in a text editor in order to verify and 
+    change the values of relevant variables as needed, particularly:
+      * NUMCPUS should be set to the number of CPU threads to be used
+        when running the various steps of the pipeline; normally this should
+        never be set to a value higher than the available CPU cores on the
+        machine.
+      * RAW should be set to 1 if starting with the raw data or to 0 if the concatenated samples are already available in the samples/ directory.
+      * HISAT2, STRINGTIE, SAMTOOLS, SORTMERNA, TRIMGALORE, RSCRIPT should be set to the full path to these
+        programs on the system. By default the script is trying to find these
+        automatically and it will succeed if the programs are in any of the
+        PATH directories for the current shell.
+
+
+ 5. Execute the main script:
+    
+    ./rnaseq_pipeline_escape.sh out
+    
+    This will run the pipeline and create ./out, ./out/hisat2/, ./out/ballgown/, ./out/sortmerna and ./out/trimgalore/
+    directories. The Ballgown object will be in ./out/ballgown/ directory.
+    The log messages,  with timestamps for each  step, will be shown on the terminal
+    and also saved in the  run.log file.
