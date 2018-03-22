@@ -16,15 +16,15 @@ Calculate differential expression
 
 
 ## Requirements:
-SortMeRNA, v.2.1b [2]
-cutadapt
-FastQC
-TrimGalore!, v.0.4.2  [3]
-HISAT2, v.2.0.5 [1]
-StringTie, v.1.3.3 [1]
-Samtools, v.1.4
-GFFcompare, v.0.9.8
-BallGown [1]
+SortMeRNA, v.2.1b [2]  
+cutadapt  
+FastQC  
+TrimGalore!, v.0.4.2  [3]  
+HISAT2, v.2.0.5 [1]  
+StringTie, v.1.3.3 [1]  
+Samtools, v.1.4  
+GFFcompare, v.0.9.8  
+BallGown [1]  
 
 
 ## Data
@@ -35,7 +35,7 @@ RNA sequencing data is available from ArrayExpress will be available soon and we
 For any queries contact Perla.TroncosoRey@quadram.ac.uk
 
 ## References
-[1] Pertea M., Kim D., Pertea G.M., Leek J.T., Salzberg S.L., Transcript-level expression analysis of RNA-seq experiments with HISAT, StringTie and Ballgown, Nature Protocols, 2016
-[2] Kopylova E., Noé L. and Touzet H., "SortMeRNA: Fast and accurate filtering of ribosomal RNAs in metatranscriptomic data", Bioinformatics (2012), doi: 10.1093/bioinformatics/bts611.
-[3] TrimGalore!, Felix Krueger, The Babraham Institute, http://www.bioinformatics.babraham.ac.uk/projects/trim_galore/
+[1] Pertea M., Kim D., Pertea G.M., Leek J.T., Salzberg S.L., Transcript-level expression analysis of RNA-seq experiments with HISAT, StringTie and Ballgown, Nature Protocols, 2016.  
+[2] Kopylova E., Noé L. and Touzet H., "SortMeRNA: Fast and accurate filtering of ribosomal RNAs in metatranscriptomic data", Bioinformatics (2012), doi: 10.1093/bioinformatics/bts611.  
+[3] TrimGalore!, Felix Krueger, The Babraham Institute, http://www.bioinformatics.babraham.ac.uk/projects/trim_galore/  
 
