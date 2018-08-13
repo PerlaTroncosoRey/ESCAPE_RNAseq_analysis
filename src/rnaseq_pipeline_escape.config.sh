@@ -33,7 +33,7 @@ TRIMGALORE=$(which trim_galore)
 GFFCOMPARE=$(which gffcompare)
 RSCRIPT=$(which Rscript)
 
-#### File paths for input data
+#### File paths to input data
 ### Full absolute paths are strongly recommended here.
 ## Warning: if using relatives paths here, these will be interpreted 
 ## relative to the  chosen output directory (which is generally the 
