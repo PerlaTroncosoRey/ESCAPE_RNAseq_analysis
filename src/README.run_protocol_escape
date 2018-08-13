@@ -61,7 +61,12 @@ and preferably multiple cores should be used, following the steps suggested belo
     
     ./rnaseq_pipeline_escape.sh OUTDIR
     
-    This will run the pipeline and create ./OUTDIR, ./OUTDIR/hisat2/, ./OUTDIR/ballgown/, ./OUTDIR/sortmerna and ./OUTDIR/trimgalore/  directories. The Ballgown object will be in ./OUTDIR/ballgown/ directory.
+    This will run the pipeline and create ./OUTDIR, ./OUTDIR/hisat2/, ./OUTDIR/ballgown/, ./OUTDIR/sortmerna and ./OUTDIR/trimgalore/ and ./OUTDIR/counts/  directories.
+
+    The Ballgown object will be in ./OUTDIR/ballgown/ directory.
+
+    The table with the gene counts that can be further analyse with edgeR is saved to: ./OUTDIR/counts/gene_count_matrix.csv
+
     The log messages,  with timestamps for each  step, will be shown on the terminal
     and also saved in the  run.log file.
 
