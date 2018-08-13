@@ -203,7 +203,6 @@ $STRINGTIE --merge -p $NUMCPUS -g  ${GTFFILE} \
 
 
 ## examine how scripts compare to the reference annotation
-## using gffcompare  -PR
 echo [`date +"%Y-%m-%d %H:%M:%S"`] "#> Compare transcripts to the reference annotation (gffcompare)"
 $GFFCOMPARE -r ${GTFFILE} -G -o ${BALLGOWNLOC}/gffcompare_merged ${BALLGOWNLOC}/stringtie_merged.gtf
 
@@ -227,11 +226,8 @@ done
 
 echo [`date +"%Y-%m-%d %H:%M:%S"`] "#> Generate the DE tables (Ballgown)"
 
+# Generate the ballgown object:  ballgown/bg_HomoSapiens_GRChr38.89_noPD.rda
 $RSCRIPT ${WRKDIR}/rnaseq_ballgown.R 
-### Rscript ${WRKDIR}/rnaseq_ballgown.R ${PHENODATA}
-### This should generate the DE tables in the output directory: 
-###      chrX_transcripts_results.csv
-###      chrX_genes_results.csv
 
 
 echo [`date +"%Y-%m-%d %H:%M:%S"`] "#> DONE."
