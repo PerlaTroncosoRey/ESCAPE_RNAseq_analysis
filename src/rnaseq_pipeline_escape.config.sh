@@ -12,7 +12,7 @@
 NUMCPUS=1
 
 #Read lenght
-READLENGTH=101
+READLENGTH=126
 
 
 #starting with raw data (RAW=1) or with the concatenated samples (RAW=0)?
