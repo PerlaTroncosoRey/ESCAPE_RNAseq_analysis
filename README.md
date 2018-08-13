@@ -35,11 +35,11 @@ BallGown [1]
 
 ## Data
 RNA sequencing data will be available from ArrayExpress soon. 
-Please contact [Perla Rey](Perla.TroncosoRey@quadram.ac.uk) to get a subset of the data for testing the pipeline. 
+Please contact Perla Rey <Perla.TroncosoRey@quadram.ac.uk> to get a subset of the data for testing the pipeline. 
 
 
 ## Contact
-For queries contact [Perla Rey](Perla.TroncosoRey@quadram.ac.uk)
+For queries contact Perla Rey <Perla.TroncosoRey@quadram.ac.uk>
 
 ## References
 [1] Pertea M., Kim D., Pertea G.M., Leek J.T., Salzberg S.L., Transcript-level expression analysis of RNA-seq experiments with HISAT, StringTie and Ballgown, Nature Protocols, 2016.  
