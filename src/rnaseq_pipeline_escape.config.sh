@@ -11,8 +11,12 @@
 #how many CPUs to use on the current machine?
 NUMCPUS=1
 
+#Read lenght
+READLENGTH=101
+
+
 #starting with raw data (RAW=1) or with the concatenated samples (RAW=0)?
-RAW=1  ### set to 1 if starting with raw data
+RAW=1  ### set to 1 if starting with raw data and several files per sample (not concatenated)
 
 #### Program paths ####
 
@@ -32,8 +36,9 @@ UNMERGEPAIREDREADS=$(which unmerge-paired-reads.sh)
 TRIMGALORE=$(which trim_galore)
 GFFCOMPARE=$(which gffcompare)
 RSCRIPT=$(which Rscript)
+PREPDE=prepDE.py
 
-#### File paths to input data
+#### File paths for input data
 ### Full absolute paths are strongly recommended here.
 ## Warning: if using relatives paths here, these will be interpreted 
 ## relative to the  chosen output directory (which is generally the 
@@ -47,6 +52,7 @@ RAWDATA="$BASEDIR/../rawdata"
 FASTQLOC="$BASEDIR/../samples"
 GENOMEIDX="$BASEDIR/../HISAT2-indexes/homo-sapiens_GRCh38"
 GTFFILE="$BASEDIR/../genes/homo-sapiens_GRCh38-89/Homo_sapiens.GRCh38.89.gtf"
+## Location of SortMeRNA's rRNA databases  
 DB="$(dirname $SORTMERNA)/../rRNA_databases"
 rRNADBs="$DB/rfam-5.8s-database-id98.fasta,$DB/rfam-5.8s-database-id98:$DB/rfam-5s-database-id98.fasta,$DB/rfam-5s-database-id98:$DB/silva-arc-16s-id95.fasta,$DB/silva-arc-16s-id95:$DB/silva-arc-23s-id98.fasta,$DB/silva-arc-23s-id98:$DB/silva-bac-16s-id90.fasta,$DB/silva-bac-16s-id90:$DB/silva-bac-23s-id98.fasta,$DB/silva-bac-23s-id98:$DB/silva-euk-18s-id95.fasta,$DB/silva-euk-18s-id95:$DB/silva-euk-28s-id98.fasta,$DB/silva-euk-28s-id98"
 
@@ -63,6 +69,5 @@ if [ $RAW -eq 1  ]; then
 else
     reads1=(${FASTQLOC}/*_R1.*)
     reads1=("${reads1[@]##*/}")
-    reads1=("${reads1[@]#*_}")
     reads2=("${reads1[@]/_R1./_R2.}")
 fi

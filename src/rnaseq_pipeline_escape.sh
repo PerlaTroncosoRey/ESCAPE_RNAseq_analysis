@@ -6,7 +6,7 @@ usage(){
     NAME=$(basename $0)
     cat <<EOF
 Usage:
-  ${NAME} [path-to-raw-data] [output]
+  ${NAME} [output]
 Wrapper script for RNA-Seq analysis protocol used for the analysis of ESCAPE data 
 based on the HISAT2/StringTie protocol (Pertea et al., Nat. Prot., 2016), 
 adding a pre-processing step using SortMeRNA (Kopylova E., Noé L. and Touzet H., Bioinformatics, 2012) 
@@ -40,7 +40,7 @@ fi
 ## load variables
 if [[ ! -f ./rnaseq_pipeline_escape.config.sh ]]; then
  usage
- echo "Error: configuration file (rnaseq_pipeline.config.sh) missing!"
+ echo "Error: configuration file (rnaseq_pipeline_escape.config.sh) missing!"
  exit 1
 fi
 
@@ -77,6 +77,14 @@ if [[ ! -f rnaseq_ballgown.R ]]; then
 fi
 
 
+## prepDE.py
+if [[ ! -f $PREPDE ]]; then
+ echo "Error: $PREPDE file missing!"
+ exit 1
+fi
+P=$WRKDIR/$PREPDE
+PREPDE=$P
+
 #Create output directory
 mkdir -p $OUTDIR
 cd $OUTDIR
@@ -89,10 +97,11 @@ SORTMERNALOC=./sortmerna
 rRNALOC=${SORTMERNALOC}/rRNA
 nonrRNALOC=${SORTMERNALOC}/nonrRNA
 TRIMGALORELOC=./trimgalore
+COUNTSLOC=./counts
 
 LOGFILE=./run.log
 
-for d in "$TEMPLOC" "$ALIGNLOC" "$BALLGOWNLOC" "$SORTMERNALOC" "$rRNALOC" "$nonrRNALOC" "$TRIMGALORELOC" ; do
+for d in "$TEMPLOC" "$ALIGNLOC" "$BALLGOWNLOC" "$SORTMERNALOC" "$rRNALOC" "$nonrRNALOC" "$TRIMGALORELOC" "$COUNTSLOC" ; do
  if [ ! -d $d ]; then
     mkdir -p $d
  fi
@@ -130,7 +139,7 @@ if [ $RAW -eq 1 ]; then
 fi  
 
 
-## hisat2 and stringtie
+## sortmerna, then hisat2 and stringtie
 for ((i=0; i<=${#reads1[@]}-1; i++ )); do
     sample="${reads1[$i]%%.*}"
     sample="${sample%_*}"
@@ -226,11 +235,17 @@ done
 
 echo [`date +"%Y-%m-%d %H:%M:%S"`] "#> Generate the DE tables (Ballgown)"
 
-# Generate the ballgown object:  ballgown/bg_HomoSapiens_GRChr38.89_noPD.rda
+-# Generate the ballgown object:  ballgown/bg_HomoSapiens_GRChr38.89_noPD.rda
 $RSCRIPT ${WRKDIR}/rnaseq_ballgown.R 
 
 
-echo [`date +"%Y-%m-%d %H:%M:%S"`] "#> DONE."
+## Create counts table to be used by egdeR
+echo [`date +"%Y-%m-%d %H:%M:%S"`] "#> Generate the DE tables (Ballgown)"
+python $PREPDE -i $BALLGOWNLOC -g ${COUNTSLOC}/gene_count_matrix.csv -t ${COUNTSLOC}/transcript_count_matrix.csv -l $READLENGTH
+
+
+
+echo [`date +"%Y-%m-%d %H:%M:%S"`] "#> DONE. End of Pipeline"
 } #pipeline end
 
 
