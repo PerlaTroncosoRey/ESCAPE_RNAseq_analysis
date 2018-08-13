@@ -5,14 +5,20 @@ A paper including this analysis has been submitted for review.
 
 ## Overview:
 
-Pre-process RNA-seq data
-- Removal of rRNA reads
-- Removal of adaptor sequences
-- Removal of low quality reads
-Alignment of reads to the reference genome
-Assembly of the alingments into full-length transcripts
-Quantification of the expression levels
-Calculate differential expression
+    * Pre-processing of RNA-seq data
+        - Removal of rRNA reads
+        - Removal of adaptor sequences
+        - Removal of low quality reads
+
+    * Alignment of reads to the reference genome
+
+    * Assembly of the alingments into full-length transcripts
+    
+    * Quantification of the expression levels
+    
+    * Calculate differential expression
+    
+    * Gene Set Enrichment Analysis (not included here)
 
 
 ## Requirements:
@@ -28,7 +34,8 @@ BallGown [1]
 
 
 ## Data
-RNA sequencing data is available from ArrayExpress will be available soon and we will provide a subset that can be used for testing.
+RNA sequencing data will be available from ArrayExpress soon. 
+A subset will be provided which can be used for testing.
 
 
 ## Contact
