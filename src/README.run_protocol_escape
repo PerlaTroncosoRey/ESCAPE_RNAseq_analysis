@@ -1,4 +1,4 @@
-This pipeline has been modified and extended from the HISAT2/StringTie protocol [1][2], adding a pre-processing step using SortMeRNA [3] and Trim Galore! [4]. The Analysis for Differential Expression is performed uisng edgeR [5] and limma.
+This pipeline has been modified and extended from the HISAT2 and StringTie protocol [1][2], adding a pre-processing step using SortMeRNA [3] and TrimGalore! [4]. The Analysis for Differential Expression is performed uisng edgeR [5] and limma.
 
 In order to run the HISAT-StringTie pipeline on the example data, a Linux or OS X computer with at least 8 GB RAM
 and preferably multiple cores should be used, following the steps suggested below.
@@ -28,14 +28,7 @@ and preferably multiple cores should be used, following the steps suggested belo
  2. Create or choose a working directory for this run (input and output files
     will be stored in this directory).
 
- 3. Download the test data (test-subset.tar.gz), rnaseq_pipeline.sh and rnaseq_pipeline.config.sh
-    in the current working directory.
-
-    To decompress and unpack test-subset.tar.gz into the current directory, use:
- 
-      tar -zxvf test-subset.tar.gz
-
-    This command will create a directory ./test-subset in the current directory.
+ 3. Download the scripts: rnaseq_pipeline.sh and rnaseq_pipeline.config.sh in the current working directory.
 
  4. Open rnaseq_pipeline.config.sh in a text editor in order to verify and 
     change the values of relevant variables as needed, particularly:
@@ -74,6 +67,7 @@ and preferably multiple cores should be used, following the steps suggested belo
 References
 [1] Pertea M, Kim D, Pertea GM, Leek JT, Salzberg SL. Transcript-level expression analysis of RNA-seq experiments with HISAT, StringTie and Ballgown. Nature Protocols. 2016.
 [2] The RNAseq protocol is accessible from ftp://ftp.ccb.jhu.edu/pub/RNAseq_protocol
-[3] Kopylova E, Noé L, Touzet H. SortMeRNA: Fast and accurate filtering of ribosomal RNAs in metatranscriptomic data. Bioinformatics. 2012. doi: 10.1093/bioinformatics/bts611.
+[3] Kopylova E, Noé L, Touzet H. SortMeRNA: Fast and accurate filtering of ribosomal RNAs in metatranscriptomic data. Bioinformatics. doi: 10.1093/bioinformatics/bts611. 2012.
 [4] Felix Krueger, The Babraham Institute. TrimGalore!
-[5] Robinson MD, McCarthy DJ, Smyth GK. edgeR: a Bioconductor package for differential expression analysis of digital gene expression data. Bioinformatics. 2010;26:139-40.
+[5] Robinson MD, McCarthy DJ, Smyth GK. edgeR: a Bioconductor package for differential expression analysis of digital gene expression data. Bioinformatics. 26:139-40. 2010.
+[6] Ritchie ME, Phipson B, Wu D, Hu Y, Law CW, Shi W, Smyth GK. limma powers differential expression analyses for RNA-sequencing and microarray studies. Nucleic Acids Research. 2015.
